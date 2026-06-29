@@ -95,6 +95,22 @@
 
 ---
 
+## Principio de diseño central: fricción cero
+
+El cliente le está dando a Faro su reputación de marca, sus contactos y su canal de WhatsApp. Eso genera miedo. El producto está diseñado para eliminar ese miedo en cada paso.
+
+| Mecanismo | Cómo reduce la fricción |
+|-----------|------------------------|
+| **Flujo de aprobación** | Ningún mensaje sale sin que el cliente lo apruebe primero |
+| **Primer envío a sí mismo** | El cliente recibe en su propio WhatsApp el mensaje antes de que llegue a un prospecto real |
+| **Arranque gradual** | Semana 1: 5 prospectos. Semana 2: 20. Semana 3: 100. La confianza se construye con resultados |
+| **Dashboard en tiempo real** | Cada mensaje enviado y cada respuesta visible al instante, con botón de pausa siempre disponible |
+| **Garantía de resultados** | Sin 3 respuestas de interés en 30 días, no se cobra |
+
+**Posicionamiento resultante:** Faro no es un autopilot — es un co-pilot. El cliente decide, Faro ejecuta.
+
+---
+
 ## Decisiones tomadas
 
 | Decisión | Opción elegida | Razón |
@@ -105,6 +121,7 @@
 | Backend | Node.js + Supabase | Stack familiar, escalable |
 | Frontend | Next.js + Vercel | Deploy rápido, sin infra |
 | Precios | $149 / $299 / $599 por mes | Starter / Growth / Scale |
+| Modelo de control | Co-pilot (aprobación humana) | Reduce fricción de confianza a cero |
 
 ---
 
