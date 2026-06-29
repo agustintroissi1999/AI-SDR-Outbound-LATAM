@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis FODA — Ideas SaaS LATAM | Agustín & el Flaco</title>
+<style>
+  :root {
+    --primary: #0f172a;
+    --accent: #6366f1;
+    --accent-light: #e0e7ff;
+    --green: #059669;
+    --green-light: #d1fae5;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --yellow: #d97706;
+    --yellow-light: #fef3c7;
+    --blue: #2563eb;
+    --blue-light: #dbeafe;
+    --gray: #64748b;
+    --border: #e2e8f0;
+    --bg: #f8fafc;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--primary);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  .cover {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #312e81 100%);
+    color: white;
+    padding: 80px 60px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #a5b4fc;
+    margin-bottom: 16px;
+  }
+
+  .cover h1 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .cover p {
+    color: #cbd5e1;
+    font-size: 15px;
+    max-width: 600px;
+  }
+
+  .cover-meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 32px;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  .cover-meta span { display: flex; align-items: center; gap: 6px; }
+
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(99,102,241,0.4);
+    z-index: 100;
+  }
+
+  .print-btn:hover { background: #4f46e5; }
+
+  @media print {
+    .print-btn { display: none; }
+    .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .foda-grid { page-break-inside: avoid; }
+    .idea-card { page-break-inside: avoid; }
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 32px;
+  }
+
+  .context-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+  }
+
+  .context-box h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+  }
+
+  .context-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .context-item {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .context-item .label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+
+  .context-item .value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--primary);
+  }
+
+  .section-subtitle {
+    color: var(--gray);
+    margin-bottom: 32px;
+    font-size: 14px;
+  }
+
+  .idea-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 48px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .idea-header {
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, #fafafa, #f1f5f9);
+  }
+
+  .idea-number {
+    background: var(--accent);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .idea-title-block { flex: 1; }
+
+  .idea-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .idea-ref {
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  .idea-ref strong { color: var(--accent); }
+
+  .rating-block { text-align: right; flex-shrink: 0; }
+
+  .rating-number {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .rating-label {
+    font-size: 11px;
+    color: var(--gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .stars {
+    color: #f59e0b;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  .idea-summary {
+    padding: 20px 28px;
+    background: var(--accent-light);
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #312e81;
+    font-weight: 500;
+  }
+
+  .validated-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .foda-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .foda-cell {
+    padding: 24px 28px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .foda-cell:nth-child(2n) { border-right: none; }
+  .foda-cell:nth-child(3), .foda-cell:nth-child(4) { border-bottom: none; }
+
+  .foda-cell h3 {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .foda-cell.fortalezas h3 { color: var(--green); }
+  .foda-cell.oportunidades h3 { color: var(--blue); }
+  .foda-cell.debilidades h3 { color: var(--yellow); }
+  .foda-cell.amenazas h3 { color: var(--red); }
+
+  .foda-cell.fortalezas { background: #f0fdf4; }
+  .foda-cell.oportunidades { background: #eff6ff; }
+  .foda-cell.debilidades { background: #fffbeb; }
+  .foda-cell.amenazas { background: #fef2f2; }
+
+  .foda-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .fortalezas .foda-dot { background: var(--green); }
+  .oportunidades .foda-dot { background: var(--blue); }
+  .debilidades .foda-dot { background: var(--yellow); }
+  .amenazas .foda-dot { background: var(--red); }
+
+  .foda-list { list-style: none; padding: 0; }
+
+  .foda-list li {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    align-items: flex-start;
+  }
+
+  .foda-list li .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .fortalezas .dot { background: var(--green); }
+  .oportunidades .dot { background: var(--blue); }
+  .debilidades .dot { background: var(--yellow); }
+  .amenazas .dot { background: var(--red); }
+
+  .idea-verdict {
+    padding: 20px 28px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    background: #f8fafc;
+  }
+
+  .verdict-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray);
+    margin-bottom: 4px;
+    white-space: nowrap;
+  }
+
+  .verdict-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--primary);
+  }
+
+  .verdict-item { flex: 1; }
+
+  .verdict-item.highlight .verdict-text {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .verdict-item.warn .verdict-text {
+    color: var(--yellow);
+    font-weight: 700;
+  }
+
+  .comparison-table {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 48px;
+    margin-bottom: 48px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .comparison-table h2 {
+    padding: 20px 28px;
+    font-size: 16px;
+    font-weight: 800;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    vertical-align: middle;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--bg); }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bar {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--accent);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .badge-green { background: var(--green-light); color: var(--green); }
+  .badge-yellow { background: var(--yellow-light); color: var(--yellow); }
+  .badge-red { background: var(--red-light); color: var(--red); }
+  .badge-blue { background: var(--blue-light); color: var(--blue); }
+
+  .recomendacion {
+    background: linear-gradient(135deg, #0f172a, #1e3a5f);
+    color: white;
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 48px;
+  }
+
+  .recomendacion h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #a5b4fc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+  }
+
+  .rec-title {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+
+  .rec-body {
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 800px;
+  }
+
+  .rec-steps {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .rec-step {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .rec-step .step-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: #a5b4fc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .rec-step .step-text {
+    font-size: 13px;
+    color: #e2e8f0;
+    font-weight: 500;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 32px;
+    color: var(--gray);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 700px) {
+    .foda-grid { grid-template-columns: 1fr; }
+    .foda-cell:nth-child(2n) { border-right: none; }
+    .foda-cell:nth-child(3) { border-bottom: 1px solid var(--border); }
+    .cover { padding: 40px 24px; }
+    .cover h1 { font-size: 26px; }
+    .container { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">⬇ Exportar PDF</button>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Análisis Estratégico · Junio 2026</div>
+  <h1>Análisis FODA<br>Ideas SaaS con IA para LATAM</h1>
+  <p>Evaluación de 5 modelos validados internacionalmente, analizados en el contexto específico del equipo y mercado objetivo.</p>
+  <div class="cover-meta">
+    <span>👥 Equipo: Agustín & el Flaco</span>
+    <span>📍 Uruguay · Argentina</span>
+    <span>🤖 Motor: Claude AI</span>
+    <span>🎯 5 ideas evaluadas</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- CONTEXTO DEL EQUIPO -->
+  <div class="context-box">
+    <h2>🧭 Contexto del equipo — variables que impactan el análisis</h2>
+    <div class="context-grid">
+      <div class="context-item">
+        <div class="label">Ubicación</div>
+        <div class="value">Uruguay + Argentina</div>
+      </div>
+      <div class="context-item">
+        <div class="label">Fortaleza clave</div>
+        <div class="value">Alto poder de prospección B2B</div>
+      </div>
+      <div class="context-item">
+        <div class="label">Expertise técnico</div>
+        <div class="value">Claude AI · Multicuentas ML</div>
+      </div>
+      <div class="context-item">
+        <div class="label">Operación actual</div>
+        <div class="value">E-commerce a escala en ML</div>
+      </div>
+      <div class="context-item">
+        <div class="label">Objetivo</div>
+        <div class="value">SaaS rentable · Mercado LATAM</div>
+      </div>
+      <div class="context-item">
+        <div class="label">Presupuesto implícito</div>
+        <div class="value">Bootstrap con IA como palanca</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Análisis FODA por idea</div>
+  <div class="section-subtitle">Cada análisis está contextualizado al equipo, mercado y momento actual. No es un análisis genérico.</div>
+
+  <!-- ===================== IDEA 1 ===================== -->
+  <div class="idea-card">
+    <div class="idea-header">
+      <div class="idea-number">1</div>
+      <div class="idea-title-block">
+        <div class="idea-title">AI SDR — Agente de ventas outbound autónomo</div>
+        <div class="idea-ref">Validado por: <strong>Artisan · 11x.ai · Ava</strong> — levantaron $50M+ en US (2024-2025)</div>
+        <div class="validated-badge">✓ Modelo validado globalmente</div>
+      </div>
+      <div class="rating-block">
+        <div class="rating-number">9.5</div>
+        <div class="rating-label">/ 10</div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="idea-summary">
+      Un AI que prospecta, investiga cada lead, redacta el primer contacto hiperpersonalizado, hace follow-up secuencial y maneja objeciones iniciales de forma autónoma por email y WhatsApp. El vendedor humano entra solo cuando hay interés real declarado.
+    </div>
+    <div class="foda-grid">
+      <div class="foda-cell fortalezas">
+        <h3><span class="foda-dot"></span>Fortalezas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Ustedes <strong>son el cliente ideal</strong> — pueden validar en su propia operación antes de vender</li>
+          <li><span class="dot"></span>Su alto poder de prospección les da ventaja para entender exactamente qué debe hacer el AI</li>
+          <li><span class="dot"></span>Claude es excepcionalmente bueno en personalización contextual en español</li>
+          <li><span class="dot"></span>WhatsApp como canal nativo LATAM — diferencial real frente a competidores US</li>
+          <li><span class="dot"></span>Pueden iterar rápido usando su propia red de contactos como beta testers</li>
+          <li><span class="dot"></span>Uruguay es un mercado pequeño ideal para pilotar antes de Argentina</li>
+        </ul>
+      </div>
+      <div class="foda-cell oportunidades">
+        <h3><span class="foda-dot"></span>Oportunidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Mercado LATAM completamente desatendido — los players actuales son 100% English-first</li>
+          <li><span class="dot"></span>El costo de un SDR humano en AR/UY es $800-1500/mes. Un AI SDR a $300/mes es ROI inmediato</li>
+          <li><span class="dot"></span>Pymes latinoamericanas están adoptando IA muy rápido en 2025-2026</li>
+          <li><span class="dot"></span>Pueden vender a agencias de ventas, distribuidoras, empresas de servicios, aseguradoras</li>
+          <li><span class="dot"></span>Modelo de pricing por resultado (leads generados) tiene altísima conversión de venta</li>
+          <li><span class="dot"></span>Expansión regional natural: UY → AR → CL → MX</li>
+        </ul>
+      </div>
+      <div class="foda-cell debilidades">
+        <h3><span class="foda-dot"></span>Debilidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Requiere integración con fuentes de datos de prospectos (LinkedIn, bases de datos locales)</li>
+          <li><span class="dot"></span>La calidad del output depende del entrenamiento con ejemplos reales del negocio del cliente</li>
+          <li><span class="dot"></span>Onboarding complejo — cada cliente tiene un ICP y tono diferente</li>
+          <li><span class="dot"></span>Riesgo de spam si no se calibra bien — puede quemar reputación del dominio del cliente</li>
+          <li><span class="dot"></span>Requiere acceso a WhatsApp Business API (costo y proceso de verificación Meta)</li>
+        </ul>
+      </div>
+      <div class="foda-cell amenazas">
+        <h3><span class="foda-dot"></span>Amenazas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Artisan, 11x.ai podrían lanzar versión en español — tienen capital para hacerlo</li>
+          <li><span class="dot"></span>Meta/WhatsApp puede cambiar políticas de API y encarecer el canal</li>
+          <li><span class="dot"></span>Regulaciones anti-spam están aumentando en LATAM (especialmente BR)</li>
+          <li><span class="dot"></span>Empresas grandes como HubSpot ya están integrando AI SDR en su plataforma</li>
+          <li><span class="dot"></span>La resistencia cultural en LATAM al contacto "frío" automatizado puede ser un freno</li>
+        </ul>
+      </div>
+    </div>
+    <div class="idea-verdict">
+      <div class="verdict-item highlight">
+        <div class="verdict-label">✅ Mayor fortaleza</div>
+        <div class="verdict-text">Son su propio cliente — validación sin riesgo</div>
+      </div>
+      <div class="verdict-item warn">
+        <div class="verdict-label">⚠️ Mayor riesgo</div>
+        <div class="verdict-text">Competidores US con capital que podrían llegar al español</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">🎯 Primer cliente ideal</div>
+        <div class="verdict-text">Distribuidora o agencia con equipo de ventas de 5+ personas</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">💰 Precio sugerido</div>
+        <div class="verdict-text">$250–500/mes por empresa o por resultados</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== IDEA 2 ===================== -->
+  <div class="idea-card">
+    <div class="idea-header">
+      <div class="idea-number">2</div>
+      <div class="idea-title-block">
+        <div class="idea-title">Análisis de llamadas de ventas + coaching IA</div>
+        <div class="idea-ref">Validado por: <strong>Gong ($7B valuación) · Chorus (adquirido por ZoomInfo $575M)</strong> — US/Europa</div>
+        <div class="validated-badge">✓ Modelo validado globalmente</div>
+      </div>
+      <div class="rating-block">
+        <div class="rating-number">9.0</div>
+        <div class="rating-label">/ 10</div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="idea-summary">
+      Grabás la llamada o reunión de ventas, el AI la transcribe, analiza qué funcionó y qué no, identifica objeciones no resueltas, puntúa al vendedor y genera un plan de coaching personalizado. El gerente de ventas deja de depender de la observación subjetiva.
+    </div>
+    <div class="foda-grid">
+      <div class="foda-cell fortalezas">
+        <h3><span class="foda-dot"></span>Fortalezas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Claude entiende el contexto conversacional en profundidad — supera a herramientas de transcripción básica</li>
+          <li><span class="dot"></span>No requiere integración compleja para el MVP — puede funcionar con grabaciones enviadas por WhatsApp</li>
+          <li><span class="dot"></span>Pueden probar el producto en sus propias conversaciones de ventas primero</li>
+          <li><span class="dot"></span>El coaching en ventas en LATAM es muy escaso y caro si es humano</li>
+          <li><span class="dot"></span>Alta retención — una empresa que entrena con el AI no vuelve al método manual</li>
+        </ul>
+      </div>
+      <div class="foda-cell oportunidades">
+        <h3><span class="foda-dot"></span>Oportunidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Empresas con equipos de ventas de 5+ personas tienen este problema de forma aguda</li>
+          <li><span class="dot"></span>El mercado de capacitación en ventas en AR mueve $200M+ anuales — digitalizable en gran parte</li>
+          <li><span class="dot"></span>Gong cobra $1,400/usuario/año en US — hay margen enorme para un precio LATAM competitivo</li>
+          <li><span class="dot"></span>Aseguradoras, financieras, inmobiliarias, telecomunicaciones son sectores con equipos grandes y alta rotación</li>
+          <li><span class="dot"></span>WhatsApp calls en negocios es un canal enorme y sin analítica — primer mover advantage</li>
+        </ul>
+      </div>
+      <div class="foda-cell debilidades">
+        <h3><span class="foda-dot"></span>Debilidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>La transcripción de llamadas WhatsApp requiere solución técnica no trivial (permisos, privacidad)</li>
+          <li><span class="dot"></span>Requiere entrenar al AI con contexto de cada industria para que el coaching sea relevante</li>
+          <li><span class="dot"></span>Ciclo de venta más largo — hay que convencer a gerentes de ventas, no solo a CEOs</li>
+          <li><span class="dot"></span>Resistencia de vendedores a ser "monitoreados" — gestión del cambio interna es difícil</li>
+        </ul>
+      </div>
+      <div class="foda-cell amenazas">
+        <h3><span class="foda-dot"></span>Amenazas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Gong y Chorus podrían expandir a LATAM con versión en español</li>
+          <li><span class="dot"></span>Regulaciones de grabación de llamadas varían por país — en algunos requiere consentimiento explícito</li>
+          <li><span class="dot"></span>HubSpot, Salesforce están integrando análisis de llamadas en sus CRM nativos</li>
+          <li><span class="dot"></span>Dependencia de APIs de transcripción (Whisper, AssemblyAI) que podrían encarecer</li>
+        </ul>
+      </div>
+    </div>
+    <div class="idea-verdict">
+      <div class="verdict-item highlight">
+        <div class="verdict-label">✅ Mayor fortaleza</div>
+        <div class="verdict-text">ROI medible en semanas — mejora de conversión es trackeable</div>
+      </div>
+      <div class="verdict-item warn">
+        <div class="verdict-label">⚠️ Mayor riesgo</div>
+        <div class="verdict-text">Resistencia interna de los vendedores a ser monitoreados</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">🎯 Primer cliente ideal</div>
+        <div class="verdict-text">Financiera o aseguradora con equipo de 10+ vendedores</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">💰 Precio sugerido</div>
+        <div class="verdict-text">$80–150/usuario/mes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== IDEA 3 ===================== -->
+  <div class="idea-card">
+    <div class="idea-header">
+      <div class="idea-number">3</div>
+      <div class="idea-title-block">
+        <div class="idea-title">AI de atención al cliente que realmente resuelve</div>
+        <div class="idea-ref">Validado por: <strong>Intercom Fin · Sierra AI · Decagon</strong> — US (2024-2025, $100M+ levantados)</div>
+        <div class="validated-badge">✓ Modelo validado globalmente</div>
+      </div>
+      <div class="rating-block">
+        <div class="rating-number">9.0</div>
+        <div class="rating-label">/ 10</div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="idea-summary">
+      No un chatbot de árbol de decisiones — un AI que lee toda la base de conocimiento, políticas, historial de tickets y contexto de la empresa, y resuelve el 70-80% de consultas sin intervención humana. Cuando no puede, escala al humano con el contexto completo ya preparado.
+    </div>
+    <div class="foda-grid">
+      <div class="foda-cell fortalezas">
+        <h3><span class="foda-dot"></span>Fortalezas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>La diferencia con chatbots actuales es brutal y demostrable en una demo de 5 minutos</li>
+          <li><span class="dot"></span>Claude tiene contexto largo — puede manejar conversaciones complejas sin perder el hilo</li>
+          <li><span class="dot"></span>El mercado de atención al cliente en LATAM está lleno de soluciones mediocres — bajo listón</li>
+          <li><span class="dot"></span>MVP posible en semanas — integración con WhatsApp Business API + base de documentos</li>
+          <li><span class="dot"></span>Multi-idioma nativo — español con variantes regionales (AR vs UY vs MX)</li>
+        </ul>
+      </div>
+      <div class="foda-cell oportunidades">
+        <h3><span class="foda-dot"></span>Oportunidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Cada empresa con más de 20 empleados tiene el problema de atención al cliente — mercado enorme</li>
+          <li><span class="dot"></span>E-commerce en LATAM creció 25% en 2024 — y el soporte no escala con ventas</li>
+          <li><span class="dot"></span>Costo de un agente humano en AR: $600-800/mes. AI a $200/mes resuelve el 70% — ahorro claro</li>
+          <li><span class="dot"></span>Dado su experiencia en ML/e-commerce, tienen contacto directo con vendedores que necesitan soporte</li>
+          <li><span class="dot"></span>Pueden ofrecer implementación como servicio + SaaS mensual — doble ingreso</li>
+        </ul>
+      </div>
+      <div class="foda-cell debilidades">
+        <h3><span class="foda-dot"></span>Debilidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>El cliente necesita documentar bien sus procesos para que el AI funcione — trabajo de onboarding alto</li>
+          <li><span class="dot"></span>Cada industria tiene contexto muy específico — educación, e-commerce, servicios son muy distintos</li>
+          <li><span class="dot"></span>Errores del AI en atención al cliente dañan la reputación del cliente final directamente</li>
+          <li><span class="dot"></span>Sin nicho definido el producto se vuelve genérico y compite con todos</li>
+        </ul>
+      </div>
+      <div class="foda-cell amenazas">
+        <h3><span class="foda-dot"></span>Amenazas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Intercom, Zendesk ya tienen AI integrada y sus precios pueden bajar al nivel LATAM</li>
+          <li><span class="dot"></span>Meta/WhatsApp cambia frecuentemente las condiciones de la API de Business</li>
+          <li><span class="dot"></span>Mercado percibido como commodity — difícil diferenciarse sin un nicho claro</li>
+          <li><span class="dot"></span>Competencia local creciente: varios players en AR y MX ya en este espacio</li>
+        </ul>
+      </div>
+    </div>
+    <div class="idea-verdict">
+      <div class="verdict-item highlight">
+        <div class="verdict-label">✅ Mayor fortaleza</div>
+        <div class="verdict-text">Demo impactante — la diferencia vs chatbots actuales es obvia al instante</div>
+      </div>
+      <div class="verdict-item warn">
+        <div class="verdict-label">⚠️ Mayor riesgo</div>
+        <div class="verdict-text">Mercado percibido como saturado — necesitan nicho claro para diferenciarse</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">🎯 Nicho recomendado</div>
+        <div class="verdict-text">E-commerce en ML — conocen el sector, acceso directo</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">💰 Precio sugerido</div>
+        <div class="verdict-text">$150–400/mes según volumen de tickets</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== IDEA 4 ===================== -->
+  <div class="idea-card">
+    <div class="idea-header">
+      <div class="idea-number">4</div>
+      <div class="idea-title-block">
+        <div class="idea-title">Generación de ads con IA para e-commerce LATAM</div>
+        <div class="idea-ref">Validado por: <strong>AdCreative.ai ($10M ARR) · Pencil (UK) · Smartly.io</strong></div>
+        <div class="validated-badge">✓ Modelo validado globalmente</div>
+      </div>
+      <div class="rating-block">
+        <div class="rating-number">9.0</div>
+        <div class="rating-label">/ 10</div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="idea-summary">
+      Subís producto o imagen, el AI genera copies para Meta/Google/TikTok, variantes de creativos, textos para ML, y sugiere ángulos de comunicación basados en el producto y audiencia. Elimina 80% del tiempo de una agencia en producción de contenido de performance.
+    </div>
+    <div class="foda-grid">
+      <div class="foda-cell fortalezas">
+        <h3><span class="foda-dot"></span>Fortalezas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Operan en e-commerce a escala — entienden qué ads funcionan en el mercado local</li>
+          <li><span class="dot"></span>Pueden validar el producto en su propia operación de ML sin costo adicional</li>
+          <li><span class="dot"></span>Claude genera copy en español con matices culturales que AdCreative.ai no logra</li>
+          <li><span class="dot"></span>Su red de contactos en ML les da acceso a cientos de potenciales clientes inmediatos</li>
+          <li><span class="dot"></span>Pueden agregar ML-específico como diferencial — nadie en el mercado lo hace bien</li>
+        </ul>
+      </div>
+      <div class="foda-cell oportunidades">
+        <h3><span class="foda-dot"></span>Oportunidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Las agencias de performance marketing en AR/UY tienen márgenes muy apretados — necesitan automatización</li>
+          <li><span class="dot"></span>Los vendedores de ML con volumen necesitan contenido constante y no tienen equipo de diseño</li>
+          <li><span class="dot"></span>TikTok Shop llegando a LATAM — necesidad de creación de contenido en escala explotará</li>
+          <li><span class="dot"></span>Pueden hacer integración directa con la API de ML para publicar automáticamente</li>
+          <li><span class="dot"></span>Modelo de créditos (pagan por ad generado) tiene conversión altísima en demos</li>
+        </ul>
+      </div>
+      <div class="foda-cell debilidades">
+        <h3><span class="foda-dot"></span>Debilidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>La generación de imagen sigue dependiendo de DALL-E o Midjourney — no es 100% nativo Claude</li>
+          <li><span class="dot"></span>La calidad creativa sin feedback humano aún tiene techo — no reemplaza un art director</li>
+          <li><span class="dot"></span>El copy genérico no convierte tan bien como el copy con conocimiento profundo del producto</li>
+          <li><span class="dot"></span>Requiere integración con plataformas de ads (Meta Business API) para ser realmente valioso</li>
+        </ul>
+      </div>
+      <div class="foda-cell amenazas">
+        <h3><span class="foda-dot"></span>Amenazas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Meta ya tiene herramientas AI nativas de generación de ads (Advantage+) que mejoran rápido</li>
+          <li><span class="dot"></span>AdCreative.ai podría lanzar versión en español con pricing competitivo para LATAM</li>
+          <li><span class="dot"></span>El mercado puede percibir el producto como feature de Canva o Adobe, no como SaaS standalone</li>
+          <li><span class="dot"></span>La velocidad de mejora de los modelos de imagen puede hacer obsoleta la ventaja en meses</li>
+        </ul>
+      </div>
+    </div>
+    <div class="idea-verdict">
+      <div class="verdict-item highlight">
+        <div class="verdict-label">✅ Mayor fortaleza</div>
+        <div class="verdict-text">Conocimiento profundo del sector + validación inmediata en operación propia</div>
+      </div>
+      <div class="verdict-item warn">
+        <div class="verdict-label">⚠️ Mayor riesgo</div>
+        <div class="verdict-text">Meta construyendo lo mismo nativamente — ventana de tiempo limitada</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">🎯 Nicho recomendado</div>
+        <div class="verdict-text">Operadores de ML con catálogo de 50+ productos</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">💰 Precio sugerido</div>
+        <div class="verdict-text">$99–299/mes o créditos por ad generado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== IDEA 5 ===================== -->
+  <div class="idea-card">
+    <div class="idea-header">
+      <div class="idea-number">5</div>
+      <div class="idea-title-block">
+        <div class="idea-title">Voice AI para llamadas inbound en español</div>
+        <div class="idea-ref">Validado por: <strong>Air.ai · Bland.ai · Retell AI</strong> — US, miles de clientes (2024-2025)</div>
+        <div class="validated-badge">✓ Modelo validado globalmente</div>
+      </div>
+      <div class="rating-block">
+        <div class="rating-number">9.0</div>
+        <div class="rating-label">/ 10</div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="idea-summary">
+      Un AI que atiende llamadas telefónicas reales en español natural — entiende lo que el cliente pide, responde, agenda turnos, califica leads, escala al humano cuando es necesario. Para inmobiliarias, concesionarias, clínicas, seguros. Elimina la recepcionista telefónica para el 80% de los llamados.
+    </div>
+    <div class="foda-grid">
+      <div class="foda-cell fortalezas">
+        <h3><span class="foda-dot"></span>Fortalezas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Nadie lo hace bien en español LATAM todavía — primer mover advantage real</li>
+          <li><span class="dot"></span>El diferencial de "suena humano" en español es demostrable en una llamada de demo de 2 minutos</li>
+          <li><span class="dot"></span>ROI inmediato y calculable — una recepcionista cuesta $500-800/mes, el AI $150/mes</li>
+          <li><span class="dot"></span>Alta stickiness — una vez integrado en el número de teléfono del negocio, no lo sacan</li>
+          <li><span class="dot"></span>Claude como cerebro + TTS moderno = calidad de conversación muy superior a alternativas</li>
+        </ul>
+      </div>
+      <div class="foda-cell oportunidades">
+        <h3><span class="foda-dot"></span>Oportunidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Inmobiliarias, concesionarias, clínicas dentales — sectores con volumen de llamadas alto y presupuesto</li>
+          <li><span class="dot"></span>Las empresas de UY y AR pierden clientes por no atender fuera del horario laboral — AI es 24/7</li>
+          <li><span class="dot"></span>Integración con calendarios y CRMs hace el producto indispensable desde el primer día</li>
+          <li><span class="dot"></span>Pueden ofrecer el número de teléfono incluido — solución llave en mano, cero fricción técnica</li>
+          <li><span class="dot"></span>Referido natural entre negocios del mismo sector — un concesionario le cuenta a otro</li>
+        </ul>
+      </div>
+      <div class="foda-cell debilidades">
+        <h3><span class="foda-dot"></span>Debilidades</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Requiere infraestructura de telefonía (Twilio + TTS) — costo fijo más alto que otras ideas</li>
+          <li><span class="dot"></span>La latencia en voz tiene que ser menor a 1 segundo — requiere optimización técnica cuidadosa</li>
+          <li><span class="dot"></span>Acentos y modismos locales (rioplatense vs mexicano) requieren ajuste fino por mercado</li>
+          <li><span class="dot"></span>Algunos clientes rechazarán la idea de "engañar" a sus clientes con un AI que suena humano</li>
+          <li><span class="dot"></span>El MVP más complejo de construir de las 5 ideas — más tiempo hasta primer ingreso</li>
+        </ul>
+      </div>
+      <div class="foda-cell amenazas">
+        <h3><span class="foda-dot"></span>Amenazas</h3>
+        <ul class="foda-list">
+          <li><span class="dot"></span>Air.ai, Bland.ai podrían lanzar soporte en español en los próximos 6-12 meses</li>
+          <li><span class="dot"></span>Google (con Duplex/Gemini) tiene ventaja en síntesis de voz natural — podría entrar al mercado</li>
+          <li><span class="dot"></span>Regulaciones en algunos países requieren disclosure de que es un AI (y va a crecer)</li>
+          <li><span class="dot"></span>La calidad de voz de los competidores mejora rápido — ventana de diferenciación técnica es corta</li>
+        </ul>
+      </div>
+    </div>
+    <div class="idea-verdict">
+      <div class="verdict-item highlight">
+        <div class="verdict-label">✅ Mayor fortaleza</div>
+        <div class="verdict-text">Mercado virgen en LATAM — ventana de primeros 12 meses sin competencia seria</div>
+      </div>
+      <div class="verdict-item warn">
+        <div class="verdict-label">⚠️ Mayor riesgo</div>
+        <div class="verdict-text">El MVP más técnico y costoso — requiere más tiempo y capital para arrancar</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">🎯 Nicho recomendado</div>
+        <div class="verdict-text">Concesionarias o inmobiliarias — ticket alto, volumen de llamadas enorme</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">💰 Precio sugerido</div>
+        <div class="verdict-text">$200–500/mes por línea + minutos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA COMPARATIVA -->
+  <div class="comparison-table">
+    <h2>Comparación estratégica — Resumen ejecutivo</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Idea</th>
+          <th>Rating</th>
+          <th>Fit con el equipo</th>
+          <th>Tiempo al primer ingreso</th>
+          <th>Dificultad técnica</th>
+          <th>Riesgo competencia</th>
+          <th>Ticket mensual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>AI SDR Outbound</strong></td>
+          <td>
+            <div class="score-bar">
+              <div class="bar" style="width:95px"></div>
+              <span><strong>9.5</strong></span>
+            </div>
+          </td>
+          <td><span class="badge badge-green">Muy alto</span></td>
+          <td><span class="badge badge-green">4–8 semanas</span></td>
+          <td><span class="badge badge-yellow">Media</span></td>
+          <td><span class="badge badge-yellow">Medio</span></td>
+          <td>$250–500</td>
+        </tr>
+        <tr>
+          <td><strong>Análisis de llamadas</strong></td>
+          <td>
+            <div class="score-bar">
+              <div class="bar" style="width:90px"></div>
+              <span><strong>9.0</strong></span>
+            </div>
+          </td>
+          <td><span class="badge badge-green">Alto</span></td>
+          <td><span class="badge badge-yellow">8–12 semanas</span></td>
+          <td><span class="badge badge-yellow">Media</span></td>
+          <td><span class="badge badge-yellow">Medio</span></td>
+          <td>$80–150/user</td>
+        </tr>
+        <tr>
+          <td><strong>Atención al cliente AI</strong></td>
+          <td>
+            <div class="score-bar">
+              <div class="bar" style="width:90px"></div>
+              <span><strong>9.0</strong></span>
+            </div>
+          </td>
+          <td><span class="badge badge-blue">Medio-alto</span></td>
+          <td><span class="badge badge-green">4–6 semanas</span></td>
+          <td><span class="badge badge-green">Baja</span></td>
+          <td><span class="badge badge-red">Alto</span></td>
+          <td>$150–400</td>
+        </tr>
+        <tr>
+          <td><strong>Generación de ads</strong></td>
+          <td>
+            <div class="score-bar">
+              <div class="bar" style="width:90px"></div>
+              <span><strong>9.0</strong></span>
+            </div>
+          </td>
+          <td><span class="badge badge-green">Muy alto</span></td>
+          <td><span class="badge badge-green">3–5 semanas</span></td>
+          <td><span class="badge badge-green">Baja</span></td>
+          <td><span class="badge badge-red">Alto</span></td>
+          <td>$99–299</td>
+        </tr>
+        <tr>
+          <td><strong>Voice AI inbound</strong></td>
+          <td>
+            <div class="score-bar">
+              <div class="bar" style="width:90px"></div>
+              <span><strong>9.0</strong></span>
+            </div>
+          </td>
+          <td><span class="badge badge-blue">Medio</span></td>
+          <td><span class="badge badge-red">12–20 semanas</span></td>
+          <td><span class="badge badge-red">Alta</span></td>
+          <td><span class="badge badge-yellow">Medio</span></td>
+          <td>$200–500</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RECOMENDACIÓN FINAL -->
+  <div class="recomendacion">
+    <h2>🎯 Recomendación estratégica</h2>
+    <div class="rec-title">Apostar al AI SDR Outbound — y validarlo en su propia operación primero</div>
+    <div class="rec-body">
+      De las cinco ideas, el AI SDR outbound es la única donde el equipo tiene ventaja competitiva <em>estructural</em>, no solo de ejecución. Ya saben prospectar, ya entienden el proceso de ventas en LATAM, y pueden usar su propia operación como laboratorio de validación sin gastar un peso en adquisición de clientes para testear.
+      <br><br>
+      La generación de ads es el segundo mejor candidato por la conexión directa con su experiencia en e-commerce y ML. Podría ser el producto #2 luego de validar el SDR.
+      <br><br>
+      Voice AI es la idea más innovadora pero también la más técnica y la que más tarda en generar ingreso — mejor dejarla para una segunda etapa cuando tengan más recursos y aprendizaje.
+    </div>
+    <div class="rec-steps">
+      <div class="rec-step">
+        <div class="step-num">Semana 1-2</div>
+        <div class="step-text">Construir el MVP del AI SDR para su propia operación y medir resultados vs proceso manual actual</div>
+      </div>
+      <div class="rec-step">
+        <div class="step-num">Semana 3-4</div>
+        <div class="step-text">Identificar 3 empresas conocidas con equipos de ventas. Ofrecerles el producto gratis a cambio de feedback</div>
+      </div>
+      <div class="rec-step">
+        <div class="step-num">Semana 5-8</div>
+        <div class="step-text">Con 2-3 casos de éxito documentados, lanzar pricing real y comenzar prospección activa</div>
+      </div>
+      <div class="rec-step">
+        <div class="step-num">Mes 3+</div>
+        <div class="step-text">Con ingresos recurrentes, evaluar si añadir la capa de generación de ads como upsell o producto separado</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Documento preparado para Agustín & el Flaco — Junio 2026 · Análisis generado con Claude AI · Uso interno confidencial
+</div>
+
+</body>
+</html>
