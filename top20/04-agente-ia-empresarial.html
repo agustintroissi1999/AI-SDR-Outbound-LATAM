@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>#4 Agente IA Empresarial Personalizado</title><style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:'Segoe UI',system-ui,sans-serif;color:#0f172a;background:#f8fafc;font-size:15px;line-height:1.7;}.cover{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 55%,#312e81 100%);color:#fff;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 72px 72px;page-break-after:always;}.cover-rank{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#a5b4fc;margin-bottom:20px;}.cover-title{font-size:52px;font-weight:900;line-height:1.1;margin-bottom:20px;}.cover-tagline{font-size:20px;color:#c7d2fe;margin-bottom:48px;max-width:700px;line-height:1.5;}.cover-pills{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px;}.pill{padding:10px 22px;border-radius:30px;font-size:13px;font-weight:700;}.pill-score{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);}.pill-cat{background:#6366f1;color:#fff;}.cover-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}.cover-stat{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:20px;}.cover-stat b{display:block;font-size:26px;font-weight:900;color:#fff;margin-bottom:4px;}.cover-stat span{font-size:11px;color:#a5b4fc;text-transform:uppercase;letter-spacing:0.5px;}.wrap{max-width:1000px;margin:0 auto;padding:60px 48px;}.section{margin-bottom:64px;page-break-inside:avoid;}.sec-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#6366f1;margin-bottom:8px;}.sec-title{font-size:30px;font-weight:900;color:#0f172a;margin-bottom:24px;padding-bottom:14px;border-bottom:3px solid #e2e8f0;}h3{font-size:20px;font-weight:800;color:#0f172a;margin:32px 0 12px;}h4{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:#64748b;margin:24px 0 10px;}p{color:#334155;margin-bottom:14px;}ul{padding-left:22px;margin-bottom:16px;}li{color:#334155;margin-bottom:8px;}.highlight-box{background:linear-gradient(135deg,#312e81,#1e3a5f);color:#fff;padding:28px 32px;border-radius:14px;margin:24px 0;}.highlight-box p{color:#c7d2fe;margin:0;}.highlight-box strong{color:#fff;}.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0;}.info-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.05);}.info-card h4{margin-top:0;}.info-card p{margin:0;font-size:14px;}.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0;}.stat-box{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.04);}.stat-box b{display:block;font-size:24px;font-weight:900;color:#6366f1;margin-bottom:4px;}.stat-box span{font-size:12px;color:#64748b;}.criterio-row{display:grid;grid-template-columns:160px 1fr 80px;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #f1f5f9;}.criterio-row:last-child{border-bottom:none;}.criterio-nombre{font-size:13px;font-weight:600;}.criterio-desc{font-size:11px;color:#94a3b8;}.bar-track{height:10px;background:#f1f5f9;border-radius:5px;overflow:hidden;}.bar-fill{height:10px;border-radius:5px;}.criterio-score{text-align:right;font-size:15px;font-weight:800;}.total-row{background:#f8faff;border-radius:10px;padding:16px 20px;margin-top:16px;display:flex;justify-content:space-between;align-items:center;}.total-row span{font-size:14px;font-weight:700;color:#64748b;}.total-row strong{font-size:22px;font-weight:900;color:#6366f1;}.foda-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;margin:24px 0;}.fc{padding:28px;}.fc h4{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;}.fc .item{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(0,0,0,.08);}.fc .item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}.fc .item b{display:block;font-size:14px;font-weight:700;margin-bottom:4px;}.fc .item p{font-size:13px;margin:0;line-height:1.5;}.fc-f{background:#f0fdf4;}.fc-f h4{color:#065f46;}.fc-o{background:#eff6ff;}.fc-o h4{color:#1e40af;}.fc-d{background:#fffbeb;}.fc-d h4{color:#78350f;}.fc-a{background:#fff1f2;}.fc-a h4{color:#9f1239;}.gtm-phase{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04);}.gtm-phase-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}.phase-num{width:40px;height:40px;background:#6366f1;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;flex-shrink:0;}.phase-title{font-size:18px;font-weight:800;}.phase-period{font-size:12px;color:#64748b;font-weight:600;}.gtm-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;}.gtm-col h4{margin-top:0;font-size:11px;}.gtm-col ul{margin:0;}.tech-table{width:100%;border-collapse:collapse;margin:20px 0;}.tech-table th{background:#0f172a;color:#94a3b8;padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px;}.tech-table td{padding:14px 16px;border-bottom:1px solid #f1f5f9;vertical-align:top;}.tech-table tr:last-child td{border-bottom:none;}.tech-table td:first-child{font-weight:700;font-size:13px;color:#64748b;white-space:nowrap;}.tech-table td:nth-child(2){font-weight:700;color:#6366f1;}.tech-table td:last-child{font-size:13px;color:#334155;}.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:24px 0;}.price-card{background:#fff;border:2px solid #e2e8f0;border-radius:16px;padding:28px;position:relative;}.price-card.featured{border-color:#6366f1;background:linear-gradient(180deg,#f5f3ff,#fff);}.price-card .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#6366f1;color:#fff;padding:4px 16px;border-radius:20px;font-size:11px;font-weight:700;}.price-plan{font-size:13px;font-weight:700;color:#64748b;margin-bottom:8px;}.price-amount{font-size:36px;font-weight:900;color:#0f172a;margin-bottom:4px;}.price-period{font-size:13px;color:#64748b;margin-bottom:16px;}.price-for{font-size:12px;background:#f1f5f9;padding:6px 12px;border-radius:6px;color:#64748b;margin-bottom:16px;}.price-features{list-style:none;padding:0;margin:0;}.price-features li{font-size:13px;padding:6px 0;border-bottom:1px solid #f1f5f9;color:#334155;}.price-features li:last-child{border-bottom:none;}.price-features li::before{content:'✓ ';color:#059669;font-weight:700;}.fin-table{width:100%;border-collapse:collapse;margin:20px 0;}.fin-table th{background:#0f172a;color:#94a3b8;padding:12px 16px;text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:.5px;}.fin-table th:first-child{text-align:left;}.fin-table td{padding:14px 16px;border-bottom:1px solid #f1f5f9;text-align:center;}.fin-table td:first-child{text-align:left;font-weight:700;color:#0f172a;}.fin-table tr:last-child td{border-bottom:none;font-weight:800;background:#f8faff;}.roadmap{margin:24px 0;}.rm-item{display:grid;grid-template-columns:140px 1fr;gap:24px;margin-bottom:28px;}.rm-period{background:#6366f1;color:#fff;border-radius:10px;padding:14px 16px;text-align:center;font-size:13px;font-weight:700;height:fit-content;}.rm-content{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;box-shadow:0 2px 6px rgba(0,0,0,.04);}.rm-content h4{margin-top:0;color:#6366f1;}.rm-content ul{margin:8px 0 0;}.comp-table{width:100%;border-collapse:collapse;margin:20px 0;}.comp-table th{background:#0f172a;color:#94a3b8;padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px;}.comp-table td{padding:14px 16px;border-bottom:1px solid #f1f5f9;vertical-align:top;font-size:13px;}.comp-table tr:last-child td{border-bottom:none;}.comp-table td:first-child{font-weight:800;color:#0f172a;}.win-cell{color:#059669;font-weight:600;}.risk-table{width:100%;border-collapse:collapse;margin:20px 0;}.risk-table th{background:#0f172a;color:#94a3b8;padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px;}.risk-table td{padding:14px 16px;border-bottom:1px solid #f1f5f9;vertical-align:top;font-size:13px;}.risk-table tr:last-child td{border-bottom:none;}.prob-alta{color:#dc2626;font-weight:700;}.prob-media{color:#d97706;font-weight:700;}.prob-baja{color:#059669;font-weight:700;}.conclusion-box{background:linear-gradient(135deg,#312e81,#0f172a);color:#fff;border-radius:16px;padding:40px;margin:32px 0;}.conclusion-box h3{color:#a5b4fc;margin-top:0;}.conclusion-box p{color:#e0e7ff;font-size:16px;line-height:1.8;margin-bottom:16px;}.conclusion-box p:last-child{margin:0;}.first-step{background:#f0fdf4;border:2px solid #059669;border-radius:12px;padding:24px;margin-top:24px;}.first-step h4{color:#065f46;margin-top:0;}.first-step p{color:#064e3b;margin:0;font-size:15px;font-weight:500;}.nav-footer{text-align:center;padding:40px;color:#64748b;font-size:13px;border-top:1px solid #e2e8f0;margin-top:60px;}.nav-footer a{color:#6366f1;text-decoration:none;font-weight:700;}@media print{.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.section{page-break-inside:avoid;}.foda-grid,.pricing-grid{-webkit-print-color-adjust:exact;print-color-adjust:exact;}body{background:#fff;}}</style></head><body>
+<div class="cover">
+  <div class="cover-rank">📊 Ranking Top 20 · Posición #4 de 20 · Agustín &amp; el Flaco · 2026</div>
+  <h1 class="cover-title">Agente IA Empresarial Personalizado</h1>
+  <p class="cover-tagline">El ChatGPT privado de la empresa: entrenado con sus documentos, políticas y procesos. Sin filtros genéricos.</p>
+  <div class="cover-pills">
+    <span class="pill pill-score">124/150 pts — TOP ★★★</span>
+    <span class="pill pill-cat">Agentes Autónomos</span>
+    <span class="pill" style="background:rgba(255,255,255,0.1);color:#a5b4fc;">MVP: 4 meses</span>
+    <span class="pill" style="background:rgba(255,255,255,0.1);color:#a5b4fc;">Validado: USA · España</span>
+  </div>
+  <div class="cover-meta">
+    <div class="cover-stat"><b>124/150</b><span>Score total</span></div>
+    <div class="cover-stat"><b>$399/mes</b><span>Ticket objetivo</span></div>
+    <div class="cover-stat"><b>4 meses</b><span>MVP</span></div>
+    <div class="cover-stat"><b>$320M</b><span>Mercado LATAM</span></div>
+  </div>
+</div>
+<div class="wrap">
+<div class="section">
+  <div class="sec-label">Sección 1</div>
+  <h2 class="sec-title">Resumen Ejecutivo</h2>
+  <p>El Agente IA Empresarial Personalizado ocupa el puesto #4 del ranking porque ataca uno de los problemas más universales de las PYMEs en crecimiento: el conocimiento está en la cabeza de pocas personas y transferirlo consume tiempo y dinero todos los días.</p><p>Cada empresa tiene información crítica dispersa en PDFs, emails, WhatsApps, carpetas de Google Drive y la memoria de sus empleados más antiguos. Cuando alguien nuevo entra, o cuando el experto está de vacaciones, ese conocimiento se bloquea. Este agente lo democratiza.</p><p>El modelo de retención es excepcional: una vez que el agente está entrenado con el conocimiento de la empresa, el costo de cambiarse a otro proveedor es muy alto. Es el producto con mayor defensibilidad natural del portafolio.</p>
+  <div class="highlight-box"><p><strong>Propuesta de valor:</strong> Un agente IA entrenado específicamente con el conocimiento de cada empresa — manuales, contratos, catálogos, FAQs — que cualquier empleado puede consultar por WhatsApp o web en segundos.</p></div>
+  <div class="stat-row">
+    <div class="stat-box"><b>124/150</b><span>Score</span></div>
+    <div class="stat-box"><b>$399</b><span>Ticket/mes</span></div>
+    <div class="stat-box"><b>4 meses</b><span>MVP</span></div>
+    <div class="stat-box"><b>28% anual</b><span>CAGR mercado</span></div>
+  </div>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 2</div>
+  <h2 class="sec-title">Problema y Solución</h2>
+  <div class="info-grid">
+    <div class="info-card"><h4>🔴 El Problema</h4><p>En toda PYME de 20+ empleados existe el mismo problema: hay 2-3 personas que "saben todo" y el resto pierde horas al día preguntándoles. "¿Cuál es el descuento máximo que puedo dar?", "¿Cuáles son los plazos de garantía del producto X?", "¿Cómo se llena el formulario de devolución?"</p><p>El costo de este problema es invisible pero enorme. Un empleado que interrumpe a un experto 8 veces al día, cada interrupción cuesta 15 minutos de la persona interrumpida = 2 horas/día de tiempo senior perdido en consultas básicas. En una empresa de 50 personas, eso son $15-20K mensuales de productividad perdida.</p><p>Las soluciones existentes (wikis, manuales, sistemas de gestión del conocimiento) fracasan porque requieren que alguien las mantenga actualizadas. Nadie lo hace. El agente IA se actualiza alimentándolo con nuevos documentos.</p></div>
+    <div class="info-card"><h4>✅ Nuestra Solución</h4><p>El Agente IA Empresarial usa Claude API con RAG (Retrieval Augmented Generation) sobre los documentos de la empresa. La implementación toma 2-4 semanas: el cliente sube sus documentos, el sistema los indexa, y el agente queda disponible por WhatsApp Business API y por interfaz web.</p><p>El agente responde preguntas en lenguaje natural, cita la fuente exacta de la información ("según el Manual de Ventas, sección 3.2"), y escala al humano cuando no tiene la respuesta o cuando la consulta requiere decisión humana.</p><p>La clave de diferenciación es que el agente habla en el tono y el vocabulario de la empresa, conoce sus productos, precios, políticas y procesos. No es un chatbot genérico — es un empleado virtual que conoce la empresa tan bien como el más antiguo de sus trabajadores.</p></div>
+  </div>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 3</div>
+  <h2 class="sec-title">Análisis de Mercado</h2>
+  <div class="stat-row">
+    <div class="stat-box"><b>$6.1B</b><span>Mercado global</span></div>
+    <div class="stat-box"><b>$320M</b><span>SAM LATAM</span></div>
+    <div class="stat-box"><b>28% anual</b><span>CAGR</span></div>
+    <div class="stat-box"><b>+65.000 PYMEs de 20+ empleados en LATAM</b><span>Clientes potenciales</span></div>
+  </div>
+  <p>El mercado de enterprise AI assistants creció un 180% en 2023-2024 según Gartner. Herramientas como Guru, Notion AI y Confluence AI demuestran que el mercado paga bien por gestión del conocimiento inteligente.</p><p>En LATAM, el gap es enorme: estas herramientas son en inglés, costosas para PYMEs ($30-50 por usuario/mes) y no tienen integración nativa con WhatsApp como canal de consulta principal.</p><p>El timing es ideal con los modelos RAG de 2025-2026: la calidad de las respuestas contextualizadas con documentos propios de la empresa alcanzó un nivel que realmente reemplaza al experto humano en consultas rutinarias.</p>
+  <h3>Segmento Primario</h3><p>Empresas de distribución, retail con múltiples sucursales, constructoras, empresas de servicios con equipos de campo y empresas de manufactura con procesos complejos.</p>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 4</div>
+  <h2 class="sec-title">Scoring Estratégico — 15 Criterios</h2>
+  
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Tamaño mercado</div><div class="criterio-desc">Tamaño del mercado total en LATAM</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">Mercado de $6.1B global. En LATAM, 65.000 PYMEs son clientes naturales con alto ticket.</div></div>
+    <div class="criterio-score" style="color:#059669;">8/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Competencia LATAM</div><div class="criterio-desc">Competencia local establecida — 10=sin rival</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:90%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">No existe solución de calidad en español con WhatsApp nativo y precio PYME. Guru y Notion son demasiado caros.</div></div>
+    <div class="criterio-score" style="color:#059669;">9/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Dificultad MVP</div><div class="criterio-desc">Facilidad de MVP funcional — 10=semanas</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:70%;background:#d97706;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">MVP en 4 meses: RAG pipeline con Claude + WhatsApp + interfaz de upload de documentos.</div></div>
+    <div class="criterio-score" style="color:#d97706;">7/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Tiempo revenue</div><div class="criterio-desc">Velocidad al primer ingreso</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">Primer revenue en mes 2 del proyecto si se cierra cliente piloto durante el desarrollo.</div></div>
+    <div class="criterio-score" style="color:#059669;">8/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Potencial MRR</div><div class="criterio-desc">Potencial MRR sostenible</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:90%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">Con 60 clientes a $399/mes = $23.940 MRR. Escalable con margen alto.</div></div>
+    <div class="criterio-score" style="color:#059669;">9/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Escalabilidad</div><div class="criterio-desc">Capacidad de escalar sin costo lineal</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:90%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">Cada nuevo cliente entrena su propio agente. Costo marginal cercano a cero.</div></div>
+    <div class="criterio-score" style="color:#059669;">9/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Ventaja equipo</div><div class="criterio-desc">Ventaja única del equipo</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">El equipo entiende tanto el proceso de ventas B2B como la tecnología Claude API para construirlo.</div></div>
+    <div class="criterio-score" style="color:#059669;">8/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Riesgo plataforma</div><div class="criterio-desc">Riesgo plataformas externas — 10=sin riesgo</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">Dependencia de Claude API pero el conocimiento de la empresa queda en nuestra plataforma. Riesgo acotado.</div></div>
+    <div class="criterio-score" style="color:#059669;">8/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Defensibilidad</div><div class="criterio-desc">Barreras para ser copiado</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">Una vez entrenado con el conocimiento de la empresa, el costo de cambiarse es muy alto. Mejor moat del portafolio.</div></div>
+    <div class="criterio-score" style="color:#059669;">10/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Claridad ROI</div><div class="criterio-desc">Claridad del ROI para el cliente</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:90%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">ROI cuantificable: si ahorra 2 horas/día del tiempo de expertos internos, se paga en días.</div></div>
+    <div class="criterio-score" style="color:#059669;">9/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">WTP</div><div class="criterio-desc">Disposición real a pagar</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:90%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">Alta WTP: las empresas pagan bien por no perder tiempo de sus expertos. El ROI es de 5-10x el precio.</div></div>
+    <div class="criterio-score" style="color:#059669;">9/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">CAC estimado</div><div class="criterio-desc">CAC estimado — 10=casi cero</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:70%;background:#d97706;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">CAC moderado: requiere demostración del valor, onboarding de 2 semanas. Ciclo de venta de 2-4 semanas.</div></div>
+    <div class="criterio-score" style="color:#d97706;">7/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Retención</div><div class="criterio-desc">Probabilidad de renovación mensual</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">Retención casi perfecta: el conocimiento de la empresa queda capturado en el sistema. Churn < 3% mensual esperado.</div></div>
+    <div class="criterio-score" style="color:#059669;">10/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Viral / referidos</div><div class="criterio-desc">Crecimiento orgánico por referidos</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:50%;background:#94a3b8;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">Viral bajo: el agente es interno, los empleados no lo muestran a clientes. El CEO puede recomendar a su red.</div></div>
+    <div class="criterio-score" style="color:#94a3b8;">5/10</div>
+  </div>
+  <div class="criterio-row">
+    <div><div class="criterio-nombre">Fit equipo</div><div class="criterio-desc">Alineación con fortalezas del equipo</div></div>
+    <div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#059669;"></div></div>
+    <div style="font-size:12px;color:#64748b;margin-top:4px;">El equipo tiene el fit técnico (Claude API) y comercial (ventas B2B) para ejecutarlo.</div></div>
+    <div class="criterio-score" style="color:#059669;">8/10</div>
+  </div>
+  <div class="total-row"><span>SCORE TOTAL</span><strong>124/150 pts</strong></div>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 5</div>
+  <h2 class="sec-title">Análisis FODA</h2>
+  <div class="foda-grid">
+    <div class="fc fc-f"><h4>✅ Fortalezas</h4><div class="item"><b>Conocimiento único de cada empresa</b><p>El agente entrenado con documentos propietarios es imposible de replicar por un competidor genérico. Cada implementación es única.</p></div><div class="item"><b>WhatsApp como canal de consulta</b><p>Los empleados ya usan WhatsApp todo el día. No hay que instalar nada ni cambiar hábitos. El agente llega al canal donde están.</p></div><div class="item"><b>Moat de datos excepcional</b><p>Una vez que la empresa sube sus documentos y el equipo empieza a usarlo, el costo de migración a otro sistema es altísimo.</p></div><div class="item"><b>ROI clarísimo y cuantificable</b><p>El cliente puede medir exactamente cuántas consultas al experto interno se redujeron y multiplicar por el costo/hora.</p></div></div>
+    <div class="fc fc-o"><h4>🚀 Oportunidades</h4><div class="item"><b>Crecimiento explosivo del knowledge management con IA</b><p>El mercado de enterprise AI assistants crece al 28% anual. Estamos al inicio del ciclo de adopción masiva.</p></div><div class="item"><b>Expansión horizontal por empresa</b><p>Una vez dentro de una empresa, la expansión natural es departamento por departamento. Un cliente se convierte en múltiples contratos.</p></div><div class="item"><b>Distribución B2B2B</b><p>Consultoras de procesos y RR.HH. pueden revender el agente a sus clientes como parte de proyectos de mejora organizacional.</p></div><div class="item"><b>Sectores con alta regulación como mercado primario</b><p>Farma, legal, financiero y construcción tienen documentación regulatoria compleja que los empleados necesitan consultar constantemente. WTP altísima.</p></div></div>
+    <div class="fc fc-d"><h4>⚠️ Debilidades</h4><div class="item"><b>Onboarding intensivo inicial</b><p>La implementación de 2-4 semanas requiere tiempo del equipo del cliente para organizar y subir documentos. Algunos no lo harán bien.</p></div><div class="item"><b>Calidad del conocimiento de entrada</b><p>Si los documentos de la empresa están desactualizados o mal estructurados, el agente dará respuestas incorrectas. Garbage in, garbage out.</p></div><div class="item"><b>Resistencia al cambio organizacional</b><p>Los "expertos internos" pueden resistir el agente porque perciben que su rol se reduce. Hay que gestionar el cambio culturalmente.</p></div><div class="item"><b>Ciclo de venta largo</b><p>Decisiones de compra que afectan a toda la empresa involucran a más stakeholders. El ciclo puede extenderse a 4-8 semanas.</p></div></div>
+    <div class="fc fc-a"><h4>🔴 Amenazas</h4><div class="item"><b>Microsoft Copilot Enterprise</b><p>Microsoft está integrando Copilot en Teams, SharePoint y Outlook. Las empresas con ecosistema Microsoft pueden encontrar la solución ahí.</p></div><div class="item"><b>Google Workspace AI</b><p>Google Notebook LM y las integraciones de Gemini en Google Workspace apuntan al mismo caso de uso para empresas con Google como plataforma.</p></div><div class="item"><b>Chatbots de bajo costo</b><p>Muchas empresas intentarán hacer esto internamente con ChatGPT o con soluciones de $50/mes. La diferencia de calidad y soporte es el argumento.</p></div><div class="item"><b>Crecimiento de modelos LLM in-house</b><p>A medida que los LLMs se vuelven más accesibles, algunas empresas querrán correr sus propios modelos sin dependencia de APIs externas.</p></div></div>
+  </div>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 6</div>
+  <h2 class="sec-title">Estrategia Go-To-Market</h2>
+  <div class="gtm-phase">
+    <div class="gtm-phase-header"><div class="phase-num">1</div><div><div class="phase-title">Fase 1 — Implementaciones piloto con demostración de ROI</div><div class="phase-period">Mes 1-4</div></div></div>
+    <p>Conseguir 5 empresas piloto en sectores con alta documentación interna: distribuidoras, constructoras o empresas de manufactura. La demo es un agente entrenado con los documentos del propio prospecto en 48 horas. El ROI se mide en la primera semana.</p>
+    <div class="gtm-cols">
+      <div class="gtm-col"><h4>Canales</h4><ul><li>Prospección directa a CEOs y gerentes de operaciones en sectores intensivos en documentación</li><li>Red de contactos de empresas B2B del equipo en Argentina y Uruguay</li><li>Demo live: entrenamos el agente con un manual del cliente en tiempo real durante la reunión</li></ul></div>
+      <div class="gtm-col"><h4>KPIs</h4><ul><li>5 pilotos pagados a $399/mes</li><li>ROI documentado en al menos 3 casos</li><li>MRR: $1.995</li></ul></div>
+    </div></div><div class="gtm-phase">
+    <div class="gtm-phase-header"><div class="phase-num">2</div><div><div class="phase-title">Fase 2 — Expansión por referencia vertical</div><div class="phase-period">Mes 5-8</div></div></div>
+    <p>Con 5 casos de éxito documentados, atacar verticales específicos donde el pain es mayor: farma (regulación compleja), legal (contratos y jurisprudencia), construcción (normas técnicas). En cada vertical, 1 cliente referencia abre la puerta a 10 más.</p>
+    <div class="gtm-cols">
+      <div class="gtm-col"><h4>Canales</h4><ul><li>Cámaras empresariales y asociaciones de industria por vertical</li><li>LinkedIn content: "Cómo [empresa X] redujo en 70% las consultas internas con IA"</li><li>Partners: consultoras de procesos y estudios de organización que implementan el agente en sus clientes</li></ul></div>
+      <div class="gtm-col"><h4>KPIs</h4><ul><li>25 clientes activos en 3 verticales</li><li>MRR: $9.975</li><li>Churn mensual < 3%</li></ul></div>
+    </div></div><div class="gtm-phase">
+    <div class="gtm-phase-header"><div class="phase-num">3</div><div><div class="phase-title">Fase 3 — Enterprise y expansión geográfica</div><div class="phase-period">Mes 9-12</div></div></div>
+    <p>Subir el ticket con features enterprise: analytics de uso, integración con HRMS y ERP, gestión de permisos por departamento, versión en portugués para Brasil.</p>
+    <div class="gtm-cols">
+      <div class="gtm-col"><h4>Canales</h4><ul><li>Alianzas con ERP vendors (SAP Business One, Odoo, Bsale) como canal de distribución</li><li>Expansión a México y Chile con resellers locales</li><li>Eventos de transformación digital como canal de leads enterprise</li></ul></div>
+      <div class="gtm-col"><h4>KPIs</h4><ul><li>50 clientes activos</li><li>MRR: $19.950</li><li>2 contratos enterprise > $1.500/mes</li></ul></div>
+    </div></div>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 7</div>
+  <h2 class="sec-title">Stack Tecnológico</h2>
+  <table class="tech-table"><thead><tr><th>Capa</th><th>Tecnología</th><th>Justificación</th></tr></thead>
+  <tbody><tr><td>LLM</td><td>Claude 3.5 Sonnet</td><td>200K de contexto y mejor comprensión de documentos técnicos complejos en español. Sin rival para RAG de calidad.</td></tr><tr><td>Vector DB</td><td>Supabase pgvector</td><td>Vector embeddings dentro de Supabase elimina la necesidad de un servicio separado. Simple, costo bajo, integración nativa.</td></tr><tr><td>Embeddings</td><td>OpenAI text-embedding-3-small</td><td>Excelente relación costo/calidad para indexar documentos. Alternativa: Voyage AI con embeddings multilingüe optimizados.</td></tr><tr><td>WhatsApp</td><td>WhatsApp Business API (Meta Cloud)</td><td>Canal de consulta principal para empleados de campo y sin acceso a computadora durante el trabajo.</td></tr><tr><td>Frontend</td><td>Next.js + Vercel</td><td>Panel de administración para upload de documentos, gestión de permisos y analytics de consultas más frecuentes.</td></tr></tbody></table>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 8</div>
+  <h2 class="sec-title">Modelo de Precios</h2>
+  <div class="pricing-grid"><div class="price-card ">
+    
+    <div class="price-plan">PYME</div><div class="price-amount">$199</div><div class="price-period">por mes</div>
+    <div class="price-for">Para: Empresas de 10-30 empleados</div>
+    <ul class="price-features"><li>500MB de documentos</li><li>WhatsApp + Web</li><li>5 usuarios administradores</li><li>Soporte en horario laboral</li><li>Actualizaciones mensuales de documentos</li></ul>
+  </div><div class="price-card featured">
+    <span class="badge">Más popular</span>
+    <div class="price-plan">Business</div><div class="price-amount">$399</div><div class="price-period">por mes</div>
+    <div class="price-for">Para: Empresas de 30-150 empleados</div>
+    <ul class="price-features"><li>5GB de documentos</li><li>WhatsApp + Web + API</li><li>Usuarios ilimitados</li><li>Analytics de consultas</li><li>Integraciones básicas (Drive, Dropbox)</li><li>Soporte prioritario</li></ul>
+  </div><div class="price-card ">
+    
+    <div class="price-plan">Enterprise</div><div class="price-amount">$999</div><div class="price-period">por mes</div>
+    <div class="price-for">Para: Empresas de 150+ empleados</div>
+    <ul class="price-features"><li>Almacenamiento ilimitado</li><li>Todos los canales</li><li>SSO y gestión de permisos por departamento</li><li>Integración ERP y HRMS</li><li>SLA 99.9%</li><li>Customer Success dedicado</li></ul>
+  </div></div>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 9</div>
+  <h2 class="sec-title">Proyecciones Financieras — Año 1</h2>
+  <table class="fin-table"><thead><tr><th>Período</th><th>Clientes</th><th>MRR (USD)</th><th>ARR est.</th><th>Nota</th></tr></thead>
+  <tbody><tr><td>Q1 (Mes 1-3)</td><td>5</td><td>$1.995</td><td>$23.940</td><td>Pilotos en constructoras y distribuidoras.</td></tr><tr><td>Q2 (Mes 4-6)</td><td>20</td><td>$7.980</td><td>$95.760</td><td>Expansión vertical. Primeros referidos.</td></tr><tr><td>Q3 (Mes 7-9)</td><td>40</td><td>$15.960</td><td>$191.520</td><td>Verticales farma y legal. Partners.</td></tr><tr><td>Q4 (Mes 10-12)</td><td>65</td><td>$25.935</td><td>$311.220</td><td>Enterprise. Brasil. Contratos anuales.</td></tr></tbody></table>
+  <div class="highlight-box"><p><strong>MRR objetivo a 12 meses:</strong> $25.935 USD · <strong>Payback:</strong> Break-even en mes 6. Contratos anuales aceleran el cash flow.</p></div>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 10</div>
+  <h2 class="sec-title">Roadmap 12 Meses</h2>
+  <div class="roadmap"><div class="rm-item">
+    <div class="rm-period">Mes 1-3</div>
+    <div class="rm-content"><h4>MVP RAG + WhatsApp</h4><ul><li>Pipeline de ingesta de documentos: PDF, DOCX, Excel, Google Docs</li><li>Integración RAG con Claude y pgvector en Supabase</li><li>WhatsApp Bot conectado al agente + interfaz web básica</li></ul>
+    <p style="font-size:12px;color:#64748b;margin-top:12px;margin-bottom:0;"><strong>KPI:</strong> 5 clientes piloto. Calidad de respuestas > 85% satisfacción.</p></div>
+  </div><div class="rm-item">
+    <div class="rm-period">Mes 4-6</div>
+    <div class="rm-content"><h4>Producto pagado y primeros clientes</h4><ul><li>Panel de administración: upload, gestión de documentos, analytics básico</li><li>Sistema de escalado al humano cuando el agente no tiene respuesta</li><li>Onboarding guiado de 2 semanas con soporte del equipo</li></ul>
+    <p style="font-size:12px;color:#64748b;margin-top:12px;margin-bottom:0;"><strong>KPI:</strong> 20 clientes, MRR $7.980</p></div>
+  </div><div class="rm-item">
+    <div class="rm-period">Mes 7-9</div>
+    <div class="rm-content"><h4>Verticales y partners</h4><ul><li>Templates de onboarding por vertical (distribución, farma, construcción, legal)</li><li>Programa de partners con consultoras de procesos</li><li>Analytics avanzado: consultas más frecuentes, gaps de conocimiento identificados</li></ul>
+    <p style="font-size:12px;color:#64748b;margin-top:12px;margin-bottom:0;"><strong>KPI:</strong> 40 clientes, MRR $15.960</p></div>
+  </div><div class="rm-item">
+    <div class="rm-period">Mes 10-12</div>
+    <div class="rm-content"><h4>Enterprise y escala</h4><ul><li>Features enterprise: SSO, permisos por departamento, auditoría de consultas</li><li>Integración con Google Drive y SharePoint para sincronización automática de documentos</li><li>Versión beta en portugués para clientes en Brasil</li></ul>
+    <p style="font-size:12px;color:#64748b;margin-top:12px;margin-bottom:0;"><strong>KPI:</strong> 65 clientes, MRR $25.935</p></div>
+  </div></div>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 11</div>
+  <h2 class="sec-title">Paisaje Competitivo</h2>
+  <table class="comp-table"><thead><tr><th>Competidor</th><th>Fortaleza</th><th>Debilidad vs nosotros</th><th>Cómo ganamos</th></tr></thead>
+  <tbody><tr><td>Microsoft Copilot</td><td>Integración nativa con Office 365 y Teams. Ecosistema masivo.</td><td>Requiere Microsoft 365 Enterprise. Sin WhatsApp nativo. Costoso para PYMEs LATAM.</td><td class="win-cell">Precio 80% menor + WhatsApp como canal + sin requerir ecosistema Microsoft = ganamos en PYMEs que no son Microsoft-first</td></tr><tr><td>Guru / Confluence AI</td><td>Herramientas maduras con mucha funcionalidad de wiki y knowledge base</td><td>Sin WhatsApp, en inglés, $20-30/usuario/mes = $2.000-6.000/mes para empresa de 100 personas</td><td class="win-cell">WhatsApp nativo + precio fijo low-cost + en español + onboarding asistido en LATAM</td></tr><tr><td>Chatbot interno con ChatGPT</td><td>Fácil de intentar. Cero costo inicial con cuentas gratuitas.</td><td>Sin RAG real sobre documentos propios. Sin WhatsApp API. Sin soporte. Sin actualización automática de documentos.</td><td class="win-cell">Calidad de respuestas sobre documentos propios es 10x mejor con RAG real + soporte y onboarding + WhatsApp integrado</td></tr></tbody></table>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 12</div>
+  <h2 class="sec-title">Análisis de Riesgos</h2>
+  <table class="risk-table"><thead><tr><th>Riesgo</th><th>Probabilidad</th><th>Impacto</th><th>Mitigación</th></tr></thead>
+  <tbody><tr><td>Baja calidad de documentos de entrada del cliente</td><td class="prob-alta">Alta</td><td class="prob-medio">Medio</td><td>Proceso de auditoría de documentos previo al onboarding. Checklist de calidad mínima requerida. Fee de onboarding para ayudar a organizar documentos.</td></tr><tr><td>Microsoft o Google incluyen el feature en sus suites</td><td class="prob-media">Media</td><td class="prob-alto">Alto</td><td>Apuntar a PYMEs que no son Microsoft-first. Diferencial de WhatsApp como canal. Precio y soporte local.</td></tr><tr><td>Resistencia del "experto interno" a perder relevancia</td><td class="prob-media">Media</td><td class="prob-medio">Medio</td><td>Posicionar el agente como herramienta para liberar al experto de consultas repetitivas, no como reemplazo. El experto entrena al agente.</td></tr><tr><td>Breach de datos de documentos confidenciales</td><td class="prob-baja">Baja</td><td class="prob-alto">Alto</td><td>Arquitectura multi-tenant con aislamiento total. Política clara de no usar datos de clientes para entrenar modelos. SOC 2 en roadmap.</td></tr></tbody></table>
+</div>
+<div class="section">
+  <div class="sec-label">Sección 13</div>
+  <h2 class="sec-title">Conclusión Estratégica</h2>
+  <div class="conclusion-box"><h3>Veredicto Final — Agente IA Empresarial Personalizado</h3><p>El Agente IA Empresarial es el producto con el mejor ratio de defensibilidad del portafolio. Una vez que el conocimiento de la empresa está capturado en el sistema, el cliente no se va. Eso convierte a cada cliente ganado en un activo recurrente casi permanente.</p><p>El desafío principal es el onboarding: conseguir que el cliente organice y suba sus documentos requiere acompañamiento activo. El modelo de implementación asistida (cobrar un fee de setup de $500-1.000) no solo genera cash adicional sino que garantiza una implementación de calidad que retiene al cliente.</p><p>La oportunidad de expansión hacia sectores altamente regulados (farma, legal, financiero) donde los documentos son críticos y el riesgo de error humano es alto es la estrategia para subir el ticket promedio a $800-1.200/mes y construir un negocio de $500K MRR+ en 24 meses.</p></div>
+  <div class="first-step"><h4>🎯 PRIMER PASO CONCRETO</h4><p>Esta semana: elegir 1 empresa del network con más de 20 empleados y documentación interna compleja. Pedir 5 documentos (manual de ventas, catálogo de productos, FAQ, política de garantías, lista de precios). Construir un agente RAG básico en 48 horas con Claude API y hacerle 20 preguntas que un empleado nuevo haría. Grabar el video. Usar ese video como el pitch principal del producto.</p></div>
+</div>
+</div>
+<div class="nav-footer">
+  <a href="index.html">← Índice</a>
+  &nbsp;·&nbsp;<a href="03-propuestas-comerciales-ia.html">← Anterior</a>
+  &nbsp;·&nbsp;<a href="05-meeting-intelligence-latam.html">Siguiente →</a>
+  &nbsp;·&nbsp;<a href="javascript:window.print()">⬇ PDF</a>
+</div>
+</body></html>
